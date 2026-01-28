@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ToDoApi.Controllers
 {
@@ -7,17 +9,18 @@ namespace ToDoApi.Controllers
     [Route("api/todos")]
     public class ToDoController : ControllerBase
     {
-        private readonly List<ToDo> _tempToDos = new List<ToDo>
+        private readonly ToDoDbContext _db;
+
+        public ToDoController(ToDoDbContext db)
         {
-            new ToDo { Title = "title1" },
-            new ToDo { Title = "title2" },
-            new ToDo { Title = "title3" }
-        };
+            _db = db;
+        }
 
         [HttpGet(Name = "GetToDos")]
-        public ActionResult<IEnumerable<ToDo>> Get()
+        public async Task<ActionResult<IEnumerable<ToDo>>> Get()
         {
-            return Ok(_tempToDos);
+            var todos = await _db.ToDos.ToListAsync();
+            return Ok(todos);
         }
     }
 }
