@@ -31,5 +31,52 @@
             Assert.Null(toDo.Description);
             Assert.Null(toDo.DueDate);
         }
+
+        [Fact]
+        public void CreateDate_RemainsSame_AfterModifyingProperties()
+        {
+            var toDo = new ToDo
+            {
+                Title = "Immutable createdate check"
+            };
+
+            var originalCreateDate = toDo.CreateDate;
+
+            // modify other properties
+            toDo.Description = "Changed";
+            toDo.DueDate = new DateOnly(2026, 11, 11);
+            toDo.Id = 7;
+            toDo.Title = "Changed Title";
+
+            Assert.Equal(originalCreateDate, toDo.CreateDate);
+        }
+
+        [Fact]
+        public void DueDate_CanBe_Set_And_Cleared()
+        {
+            var toDo = new ToDo
+            {
+                Title = "DueDate test"
+            };
+
+            Assert.Null(toDo.DueDate);
+
+            var due = new DateOnly(2026, 8, 15);
+            toDo.DueDate = due;
+            Assert.Equal(due, toDo.DueDate);
+
+            toDo.DueDate = null;
+            Assert.Null(toDo.DueDate);
+        }
+
+        [Fact]
+        public void Title_DoesNot_AllowEmptyString_Or_Whitespace()
+        {
+            // empty string
+            Assert.Throws<ArgumentException>(() => new ToDo { Title = string.Empty });
+
+            // whitespace-only should also be rejected
+            Assert.Throws<ArgumentException>(() => new ToDo { Title = "   " });
+        }
     }
 }
