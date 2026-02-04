@@ -43,7 +43,7 @@ Start the API server:
 dotnet run
 ```
 
-The API will be available at `http://localhost:5000` (or the configured port in your environment).
+The API will be available at `http://localhost:5197` (or the configured port in your environment).
 
 ## API Endpoints
 
