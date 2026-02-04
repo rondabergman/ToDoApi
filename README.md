@@ -192,11 +192,3 @@ ToDoApi/
 ### Data Seeding
 
 Sample data can be seeded into the database on startup through the `DataSeedExtension` class. This is useful for development and testing.
-
-## License
-
-Include your license information here.
-
-## Support
-
-For issues or questions, please create an issue in the repository.
