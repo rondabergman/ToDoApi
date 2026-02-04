@@ -21,7 +21,7 @@ public static class DataSeedExtension
                 new ToDo { Title = "Finish Project Report", Description = "Write executive summary and prepare slides", DueDate = new DateOnly(2026, 2, 15) },
                 new ToDo { Title = "Call Mom", Description = "Weekly check-in" },
                 new ToDo { Title = "Pay Electricity Bill", Description = "Use online banking", DueDate = new DateOnly(2026, 2, 5) },
-                new ToDo { Title = "Gym Session", Description = "Leg day workout", DueDate = new DateOnly(2026, 1, 30) },
+                new ToDo { Title = "Gym Session", Description = "Leg day workout", DueDate = new DateOnly(2026, 1, 30), IsCompleted = true },
                 new ToDo { Title = "Schedule Oil Change", Description = "Call mechanic for appointment", DueDate = new DateOnly(2026, 4, 10) },
                 new ToDo { Title = "Plan Birthday Party", Description = "Guest list, venue and cake", DueDate = new DateOnly(2026, 6, 12) }
             );

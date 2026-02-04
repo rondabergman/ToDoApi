@@ -17,7 +17,7 @@ namespace ToDoApi.Controllers
         [HttpGet(Name = "GetToDos")]
         public async Task<ActionResult<IEnumerable<ToDo>>> Get()
         {
-            //Get and returna all the todos
+            //Get and return all the todos
             var todos = await _db.ToDos.ToListAsync();
             return Ok(todos);
         }
@@ -76,6 +76,7 @@ namespace ToDoApi.Controllers
             existing.Title = todo.Title;
             existing.Description = todo.Description;
             existing.DueDate = todo.DueDate;
+            existing.IsCompleted = todo.IsCompleted;
 
             _db.Entry(existing).State = EntityState.Modified;
             await _db.SaveChangesAsync();
